@@ -1,0 +1,24 @@
+{% extends "blogapp/base.html" %}
+
+
+
+ {% block content %}
+
+<form  class="post-form card p-4" style="width:830px" action="/updatecomment/{{ one_com.id }}" method="POST">
+      {% csrf_token %}
+    {% if get_session %}
+    <input type="text" name="user_id" value="{{ get_session }}" hidden >
+     {% endif %}
+    <input type="text" name="post_id" value="{{ categories.id }}" hidden >
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">commentaire:</label>
+    <div class="col-sm-4">
+      <input class="form-control" type="text" name="commentaire" value="{{ one_com.commentaire }}"  >
+    </div>
+  </div>
+
+    <input type="submit"  class="btn btn-warning btn-sm mt-2" value="Modifier">
+</form>
+
+
+{% endblock %}

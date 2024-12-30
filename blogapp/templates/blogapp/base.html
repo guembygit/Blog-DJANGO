@@ -1,0 +1,159 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link href="media/Images/blog.png " rel="icon">
+    <link rel="stylesheet" href="{% static 'blogapp/css/style.css' stylesheet %}" type="text/css" media="screen">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.4/css/all.min.css">
+
+    <title>{% block title %} Codeur Blog {% endblock %}</title>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand text-dark h2" href="{% url 'index' %}">Codeur Blog</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a class="nav-link text-secondary" href="{% url 'propos' %}">Qui sommes nous ?</a>
+        </li>
+
+      </ul>
+      <form action="{% url 'search_results' %}" method="GET" class="d-flex" role="search">
+        <input class="form-control me-2" name="query" type="search" placeholder="Recherche ..." aria-label="Search">
+      </form>
+    </div>
+  </div>
+</nav>
+<div class="container py-4">
+{% block content %}
+
+
+{% endblock %}
+</div>
+
+
+<br><br><br><br><br>
+
+<footer class="bg-dark text-center text-white" >
+
+  <div class="container p-4">
+
+    <section class="mb-4">
+
+
+    </section>
+
+
+    <section class="">
+      <div class="row">
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+          <h6 class="text-uppercase" style="color:#dbdada">Nos Coordonnées</h6>
+          <ul class="list-unstyled mb-0" id="jumo">
+            <li class="nav-item">
+              <a class="nav-link fs-6" href="#" style="color:#a19f9f" ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fs-6" href="#!"style="color:#a19f9f" >bakalachrist001@gmail.com</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fs-6" href="#!" style="color:#a19f9f" >Adresse: Paris</a>
+            </li>
+            <li class="nav-items" >
+  <a class="nav-linkss fs-8" href="#!" >
+     </a>
+  </li>
+          </ul>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+        <h5 class="text-uppercase" style="color:#dbdada">Aide</h5>
+
+<ul class="list-unstyled mb-0" id="jumo">
+<li class="nav-item">
+              <a class="nav-link fs-6" href="#" style="color:#a19f9f" >Obtenir de l'aide par appel</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fs-6" href="#!"style="color:#a19f9f" ></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fs-6" href="#!" style="color:#a19f9f" >Outils</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link fs-6" href="#!" style="color:#a19f9f" >Evaluation</a>
+            </li>
+
+</ul>
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+
+
+        <h5 class="text-uppercase" style="color:#dbdada">Legal</h5>
+
+<ul class="list-unstyled mb-0" id="jumo">
+<li class="nav-item">
+              <a class="nav-link fs-6" href="#" style="color:#a19f9f" >Protection des données</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fs-6" href="#!"style="color:#a19f9f" >Conditions d'utilisation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link fs-6" href="#!" style="color:#a19f9f" ></a>
+            </li>
+
+</ul>
+
+
+        </div>
+
+        <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+
+          <h6 class="text-uppercase" style="color:#dbdada">reseaux sociaux</h6>
+
+          <ul class="list-unstyled mb-0" id="jumo">
+
+            <li class="nav-items" >
+  <a class="nav-links fs-6" href="#!" style="color:#a19f9f" >Suivez-nous sur </a>
+  </li>
+  <li class="nav-items" >
+  <a class="nav-linkss fs-6" href="#!" style="color:#a19f9f" > </a>
+  </li>
+  <li class="nav-items" >
+        <a class=" m-1" href="https://www.linkedin.com/in/christ-bakala-3b880925a" role="button"
+        ><i class="fab fa-linkedin" style="color:rgb(27, 104, 248);font-size:23px"></i
+      ></a>
+
+
+
+      </li>
+          </ul>
+        </div>
+
+      </div>
+
+    </section>
+
+  </div>
+  <div class="bg-dark text-center p-3" style="color: #a19f9f;">
+
+   2023 Copyright ©
+    <a  style="color: #dbdada;" href="https:Index.php">Codeur Blog</a>
+  </div>
+</footer>
+
+
+
+</body>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</html>

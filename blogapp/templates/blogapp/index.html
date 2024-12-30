@@ -1,0 +1,101 @@
+{% extends "blogapp/base.html" %}
+{% block content %}
+<nav class="navbar navbar-expand-lg bg-light">
+  <div class="container-fluid">
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#"> <img width="25" class="rounded-circle img-thumbnail " height="6" src="media/{{ user.image}}" alt="connect" style="max-height:300px"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark " href="/edituser/{{ user.id}}">Mon profil</a>
+        </li>
+           <li class="nav-item">
+          <a class="nav-link text-dark " href="{% url 'create' %}">Créer un post</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-dark " href="{% url 'deconect' %}">Deconnection</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  <div class="ecran p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+          <h5 class="display-5 fw-bold">Hello  {{ user.username }}</h5>
+        <h1 class="display-5 fw-bold" id="animatedText"></h1>
+        <p class="col-md-8 fs-5">Using a series of utilities, you can create this jumbotron, just like the one in previous versions of Bootstrap. Check out the examples below for how you can remix and restyle it to your liking.</p>
+      </div>
+    </div>
+
+
+<div class="card" style="width: 18rem;">
+  <div class="card-header">
+  Catégories
+  </div>
+  <ul class="list-group list-group-flush">
+
+       {% for pot in context %}
+            <li class="list-group-item"><a class=" text-dark text-decoration-none" href="/category/{{ pot.id }}">{{ pot.name }}</a></li>
+      {% endfor %}
+  </ul>
+</div>
+<br>
+<div class="row mb-2">
+    {% for post in blog %}
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{ post.category }}</strong>
+          <h5 class="mb-0">{{ post.titre }}</h5>
+          <div class="mb-1 text-muted">{{ post.created }}</div>
+          <p class="card-text mb-2">{{ post.description|truncatechars:100  }}</p>
+            <div class="row">
+                <div class="col-3">
+                     <a href="/post/{{ post.id }}" class="btn btn-outline-primary btn-sm">lire +</a>
+                </div>
+                  <div class="col-3">
+                    <a href="/edit/{{ post.id }}" class="btn btn-outline-warning  btn-sm"> Edit</a>
+                </div>
+                  <div class="col-3">
+                      <a href="/delete/{{ post.id }}" class="btn btn-outline-danger  btn-sm" >Delete</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-auto d-none d-lg-block">
+             <img width="200" height="250" src="media/{{ post.image_post}}" alt="connect" style="max-height:300px">
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+
+
+
+
+
+<script>
+  const text = "Bienvenue sur Codeur Blog";
+  const speed = 50;
+  let i = 0;
+
+  function typeWriter() {
+    if (i < text.length) {
+      document.getElementById("animatedText").innerHTML += text.charAt(i);
+      i++;
+      setTimeout(typeWriter, speed);
+    }
+  }
+
+  window.onload = function() {
+    typeWriter();
+  };
+</script>
+<style>
+.ecran{
+background:linear-gradient(45deg, #03ff006e, #00b8ff70);
+}
+</style>
+{% endblock %}

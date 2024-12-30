@@ -1,0 +1,59 @@
+{% extends "blogapp/base.html" %}
+
+{% block content %}
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+   <center> <h2>Editer le  Post</h2></center>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <form method="POST" class="post-form" action="/update/{{one_post.id}}" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label">Title:</label>
+          <div class="col-md-10">
+            <input type="text" class="form-control" name="titre" required value="{{ one_post.titre }}" />
+          </div>
+        </div>
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label">Slug:</label>
+          <div class="col-md-10">
+            <input type="text" class="form-control" name="slug" required value="{{ one_post.slug }}" />
+          </div>
+        </div>
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label">Category:</label>
+          <div class="col-md-10">
+            <select class="form-control" name="category_id" required>
+              {% for categorie in categories %}
+              <option value="{{ categorie.id }}" {% if one_post.category_id == categorie.id %}selected{% endif %}>{{ categorie.name }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label">Description:</label>
+          <div class="col-md-10">
+            <textarea  class="form-control p-4" name="description" required>{{ one_post.description }}</textarea>
+          </div>
+        </div>
+        <div class="form-group row mb-2">
+          <label class="col-md-2 col-form-label">Image:</label>
+          <div class="col-md-10">
+            <input type="file" class="form-control-file" name="image_post">
+          Changer cette image <img src="/media/{{ one_post.image_post }}" alt="connect" style="height:30px;width:45px">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-2"></div>
+          <div class="col-md-10">
+            <button type="submit" class="btn btn-primary">Enregistrer les Changements</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

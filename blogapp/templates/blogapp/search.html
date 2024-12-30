@@ -1,0 +1,35 @@
+{% extends "blogapp/base.html" %}
+
+{% block content %}
+<div class="row mb-2">
+    {% for post in results %}
+    <div class="col-md-6">
+      <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <strong class="d-inline-block mb-2 text-primary">{{ post.category }}</strong>
+          <h5 class="mb-0">{{ post.titre }}</h5>
+          <div class="mb-1 text-muted">{{ post.created }}</div>
+          <p class="card-text mb-2">{{ post.description|truncatechars:100 }}</p>
+            <div class="row">
+                <div class="col-3">
+                     <a href="/post/{{ post.slug }}" class="btn btn-outline-primary btn-sm">lire +</a>
+                </div>
+                  <div class="col-3">
+                    <a href="/edit/{{ post.slug }}" class="btn btn-outline-warning  btn-sm"> Edit</a>
+                </div>
+                  <div class="col-3">
+                      <a href="/delete/{{ post.slug }}" class="btn btn-outline-danger  btn-sm" >Delete</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-auto d-none d-lg-block">
+             <img width="200" height="250" src="/media/{{ post.image_post}}" alt="connect" style="max-height:300px">
+        </div>
+      </div>
+    </div>
+
+    {% endfor %}
+  </div>
+
+{% endblock %}

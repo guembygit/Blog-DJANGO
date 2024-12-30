@@ -1,0 +1,66 @@
+{% extends "blogapp/base.html" %}
+
+
+
+ {% block content %}
+<div class="container py-5">
+	<h1>Créer un post</h1>
+
+  	<form method="POST" class="post-form" action="{% url 'create' %}" enctype="multipart/form-data">
+        {% csrf_token %}
+    <div class="container">
+<br>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <h3>Enter Details</h3>
+    </div>
+  </div>
+
+  <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Titre:</label>
+    <div class="col-sm-4">
+      {{ form.titre }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Slug:</label>
+    <div class="col-sm-4">
+      {{ form.slug }}
+    </div>
+  </div>
+    <div class="form-group row">
+    <label class="col-sm-2 col-form-label">Category :</label>
+    <div class="col-sm-4">
+      {{ form.category_id }}
+    </div>
+  </div>
+		<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Description:</label>
+    <div class="col-sm-4">
+      {{ form.description }}
+    </div>
+  </div>
+
+  	<div class="form-group row">
+    <label class="col-sm-2 col-form-label">Image du post:</label>
+    <div class="col-sm-4">
+      {{ form.image_post }}
+    </div>
+  </div>
+      <div>
+      <input type="text" name="user_id" hidden value="{{ get_session }}">
+    </div>
+    <div class="form-group row">
+    <label class="col-sm-1 col-form-label"></label>
+    <div class="col-sm-4">
+    <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+    </div>
+</form>
+	<p class="text-center">If you already have an account, <a href="/register">login</a> instead.</p>
+</div>
+
+
+{% endblock %}
